@@ -1,0 +1,30 @@
+.reveal.sentry .breadcrumbs {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 30vh;
+}
+
+.reveal.sentry .breadcrumbs img {
+  border: none;
+  background: transparent;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 3px white);
+  box-shadow: none;
+}
+
+.reveal.sentry .breadcrumbs img.crumb {
+  height: 13%;
+  width: auto;
+}
+
+.reveal.sentry .breadcrumbs img.child {
+  height: 100%;
+  width: auto;
+}
+
+.reveal.sentry li {
+  margin-bottom: 3rem;
+}

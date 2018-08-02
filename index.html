@@ -4,13 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Error tracking on Reboot</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/league.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="lib/css/sentry.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -22,10 +24,83 @@
 		</script>
 	</head>
 	<body>
-		<div class="reveal">
+		<div class="reveal sentry">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-transition-speed="fast" data-background="./img/bomb.jpg">
+					<h2>Error Tracking</h2>
+					<h4>Improve debug experience for Reboot app</h4>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h2>Error tracking ? Why not logging ?</h2>
+
+					<img src="./img/everything_is_important.jpg" />
+				</section>
+
+				<section data-transition-speed="fast">
+					<h2>The logging experience</h2>
+
+					<ol>
+						<li class="fragment"><u>Log only errors</u></li>
+						<li class="fragment">Read your logs : not enough information</li>
+						<li class="fragment"><u>Log everything</u></li>
+						<li class="fragment">Too much noise</li>
+						<li class="fragment"><u>Ignore everything</u></li>
+					</ol>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h4>So how error tracking is more beneficial for us ?</h4>
+					<p class="fragment">Crashes <u>will happen</u>. Most of the time, when you don't expect them.</p>
+					<p class="fragment">We need a tool that <u>catches these exeptions for us.</u></p>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h4>Error names are not sufficients</h4>
+					<img src="./img/error_code.png" />
+				</section>
+
+				<section data-transition-speed="fast">
+					<h4>Catching exceptions means</h4>
+
+					<ul>
+						<li class="fragment">Sending an alert when an unexpected error occurred (failing to read a server data, native crash, problem with input parsing...)</li>
+						<li class="fragment">Attaching a stack trace</li>
+						<li class="fragment">Attaching a context (Device type, OS version, App version...)</li>
+						<li class="fragment">Attaching the history of the user's actions (we will call this "breadcrumbs")</li>
+					</ul>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h2>Breadcrumbs</h2>
+					<div class="breadcrumbs">
+						<img class="crumb" src="./img/crumb.png" />
+						<img class="crumb" src="./img/crumb.png" />
+						<img class="crumb" src="./img/crumb.png" />
+						<img class="crumb" src="./img/crumb.png" />
+						<img class="crumb" src="./img/crumb.png" />
+						<img class="child" src="./img/child.png" />
+					</div>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h4>Breadcrumbs can be</h4>
+					<ul>
+						<li class="fragment">Service requests (API calls, avatar uploads, assets downloads...)</li>
+						<li class="fragment">Internal logs</li>
+						<li class="fragment">Explicit events sent by the App ("Opening SAM", "Adding Friend"...)</li>
+						<li class="fragment">Previous errors</li>
+					</ul>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h3>Demo time</h3>
+					<h4>let's see how sentry answers our needs</h4>
+				</section>
+
+				<section data-transition-speed="fast">
+					<h3>Questions ?</h3>
+				</section>
 			</div>
 		</div>
 
@@ -37,6 +112,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
